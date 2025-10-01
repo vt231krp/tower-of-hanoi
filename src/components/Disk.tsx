@@ -3,7 +3,6 @@ interface DiskProps {
 }
 
 const diskColors: string[] = [
-  "bg-red-500",
   "bg-blue-500",
   "bg-green-500",
   "bg-yellow-500",
@@ -18,7 +17,7 @@ export const Disk = ({ size }: DiskProps) => {
 
   return (
     <div
-      className={`h-4 rounded-3xl ${diskColors[size]} mx-auto`}
+      className={`h-4 rounded-3xl ${diskColors[size - 1]} mx-auto`}
       style={{ width }}
     ></div>
   );
