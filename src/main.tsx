@@ -2,12 +2,14 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { App } from "./App.tsx";
-import { GameProvider } from "./components/providers/GameProvider.tsx";
+import { GameProvider, SettingsProvider } from "./components/providers";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <GameProvider>
-      <App />
+      <SettingsProvider>
+        <App />
+      </SettingsProvider>
     </GameProvider>
   </StrictMode>,
 );

@@ -3,15 +3,13 @@ import { Tower } from "../components";
 import { Timer, type TimerRef } from "../components/Timer";
 import { useTowerOfHanoi } from "../hooks/useTowerOfHanoi";
 import { useResults } from "../hooks/useResults";
+import { useSettings } from "../contexts/SettingsContext";
 
-interface GamePageProps {
-  initDifficulty?: number;
-}
-
-export const GamePage = ({ initDifficulty }: GamePageProps) => {
+export const GamePage = () => {
   const { addResult, lastGame } = useResults();
+  const { difficulty } = useSettings();
 
-  const difficulty = initDifficulty || lastGame?.difficulty || 3;
+  const disks = difficulty || lastGame?.difficulty || 3;
 
   const {
     moves,
@@ -21,7 +19,7 @@ export const GamePage = ({ initDifficulty }: GamePageProps) => {
     isWon,
     startTime,
     endTime,
-  } = useTowerOfHanoi(difficulty);
+  } = useTowerOfHanoi(disks);
 
   const timerRef = useRef<TimerRef>(null);
 
@@ -32,20 +30,12 @@ export const GamePage = ({ initDifficulty }: GamePageProps) => {
 
     if (!endTime) return;
 
-    console.log({
-      difficulty,
-      isCompleted: true,
-      moves,
-      time: endTime - startTime,
-      minimumMoves: Math.pow(2, difficulty) - 1,
-    });
-
     addResult({
       difficulty,
       isCompleted: true,
       moves,
       time: endTime - startTime,
-      minimumMoves: Math.pow(2, difficulty) - 1,
+      minimumMoves: Math.pow(2, disks) - 1,
     });
   }, [isWon]);
 

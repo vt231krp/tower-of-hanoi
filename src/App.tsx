@@ -3,18 +3,14 @@ import { Header } from "./components";
 import { useGameContext } from "./contexts/GameContext";
 
 export const App = () => {
-  const { gameState, setGameState } = useGameContext();
-
-  const handleStartGame = () => {
-    setGameState("game");
-  };
+  const { gameState } = useGameContext();
 
   const renderPage = () => {
     switch (gameState) {
       case "start":
-        return <StartPage onStartGame={handleStartGame} />;
+        return <StartPage />;
       case "game":
-        return <GamePage initDifficulty={2} />;
+        return <GamePage />;
       case "results":
         return <ResultsPage />;
     }
