@@ -1,6 +1,7 @@
 import { GamePage, ResultsPage, SettingsPage, StartPage } from "./pages";
 import { Header } from "./components";
 import { useGameContext } from "./contexts/GameContext";
+import { Modal } from "./components/Modal";
 
 export const App = () => {
   const { gameState } = useGameContext();
@@ -22,6 +23,7 @@ export const App = () => {
     <div className="flex min-h-screen flex-col bg-slate-900">
       <Header />
       {renderPage()}
+      <Modal />
     </div>
   );
 };

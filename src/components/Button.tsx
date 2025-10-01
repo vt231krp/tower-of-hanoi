@@ -27,7 +27,7 @@ const variants: Record<string, Record<string, string>> = {
 
 export const Button = ({
   className,
-  size = "md",
+  size = "sm",
   variant = "primary",
   disabled = false,
   ...props
