@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import type { Settings } from "../types";
 
-interface SettingsContextType {
+interface ISettingsContext {
   settings: Settings;
   difficulty: number;
   updateDifficulty: (difficulty: number) => void;
@@ -10,7 +10,7 @@ interface SettingsContextType {
   isLoaded: boolean;
 }
 
-export const SettingsContext = createContext<SettingsContextType | undefined>(
+export const SettingsContext = createContext<ISettingsContext | undefined>(
   undefined,
 );
 
