@@ -18,6 +18,13 @@ export const Header = () => {
 
         <nav className="flex items-center gap-4">
           <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setGameState("settings")}
+          >
+            Settings
+          </Button>
+          <Button
             size="sm"
             variant="ghost"
             onClick={() => setGameState("start")}

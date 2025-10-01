@@ -1,6 +1,9 @@
-import { GameSetupForm } from "../components";
+import { Button } from "../components";
+import { useGameContext } from "../contexts/GameContext";
 
 export const StartPage = () => {
+  const { setGameState } = useGameContext();
+
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-10">
       <div className="text-center">
@@ -12,9 +15,9 @@ export const StartPage = () => {
         </p>
       </div>
 
-      <div className="w-full max-w-md space-y-5">
-        <GameSetupForm />
-      </div>
+      <Button size="lg" onClick={() => setGameState("game")}>
+        Start Game
+      </Button>
     </div>
   );
 };

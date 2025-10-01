@@ -16,6 +16,10 @@ export const ResultsPage = () => {
     setGameState("game");
   };
 
+  const handleBack = () => {
+    setGameState("start");
+  };
+
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-10">
       <div className="text-center">
@@ -130,7 +134,7 @@ export const ResultsPage = () => {
             size="sm"
             variant="secondary"
             className="flex-1"
-            onClick={() => setGameState("start")}
+            onClick={handleBack}
           >
             Back to Menu
           </Button>
@@ -138,7 +142,7 @@ export const ResultsPage = () => {
             size="sm"
             variant="secondary"
             className="flex-1"
-            onClick={() => clearResults()}
+            onClick={clearResults}
           >
             Clear Results
           </Button>

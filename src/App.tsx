@@ -1,4 +1,4 @@
-import { GamePage, ResultsPage, StartPage } from "./pages";
+import { GamePage, ResultsPage, SettingsPage, StartPage } from "./pages";
 import { Header } from "./components";
 import { useGameContext } from "./contexts/GameContext";
 
@@ -13,6 +13,8 @@ export const App = () => {
         return <GamePage />;
       case "results":
         return <ResultsPage />;
+      case "settings":
+        return <SettingsPage />;
     }
   };
 

@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "./Button";
 import { settingsSchema } from "../schemas/settings";
-import { useGameContext } from "../contexts/GameContext";
 import { useSettings } from "../contexts/SettingsContext";
 
 type GameSetupData = z.infer<typeof settingsSchema>;
@@ -15,7 +14,6 @@ interface GameSetupFormProps {
 
 export const GameSetupForm = ({ initialValues }: GameSetupFormProps) => {
   const { settings, updateSettings } = useSettings();
-  const { setGameState } = useGameContext();
 
   const {
     register,
@@ -58,7 +56,6 @@ export const GameSetupForm = ({ initialValues }: GameSetupFormProps) => {
 
   const handleFormSubmit = (data: GameSetupData) => {
     updateSettings(data);
-    setGameState("game");
   };
 
   return (
@@ -140,7 +137,7 @@ export const GameSetupForm = ({ initialValues }: GameSetupFormProps) => {
         </div>
 
         <Button type="submit" size="lg" variant="primary" className="w-full">
-          Start Game
+          Save
         </Button>
       </form>
     </div>
