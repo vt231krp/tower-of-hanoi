@@ -1,23 +1,23 @@
+import { useNavigate } from "react-router";
 import { Button } from "../components";
-import { useGameContext } from "../contexts/GameContext";
 import { useSettings } from "../contexts/SettingsContext";
 import { useResults } from "../hooks/useResults";
 import { formatTime } from "../lib/utils";
 
 export const ResultsPage = () => {
   const { lastGame, statistics, clearResults } = useResults();
-  const { setGameState } = useGameContext();
   const { updateDifficulty } = useSettings();
+  const navigate = useNavigate();
 
   const handlePlayAgain = () => {
     if (lastGame?.difficulty) {
       updateDifficulty(lastGame?.difficulty);
     }
-    setGameState("game");
+    navigate("/game");
   };
 
   const handleBack = () => {
-    setGameState("start");
+    navigate("/");
   };
 
   return (

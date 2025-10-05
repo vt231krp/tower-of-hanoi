@@ -1,18 +1,13 @@
+import { Link } from "react-router";
 import { GameSetupForm } from "../components";
 import { Button } from "../components";
-import { useGameContext } from "../contexts/GameContext";
 import { useSettings } from "../contexts/SettingsContext";
 
 export const SettingsPage = () => {
-  const { setGameState } = useGameContext();
   const { resetSettings } = useSettings();
 
   const handleReset = () => {
     resetSettings();
-  };
-
-  const handleBack = () => {
-    setGameState("start");
   };
 
   return (
@@ -21,13 +16,8 @@ export const SettingsPage = () => {
         <GameSetupForm />
 
         <div className="flex w-full gap-4">
-          <Button
-            size="sm"
-            variant="secondary"
-            className="flex-1"
-            onClick={handleBack}
-          >
-            Back to Menu
+          <Button size="sm" variant="secondary" className="flex-1" asChild>
+            <Link to="/">Back to Start</Link>
           </Button>
           <Button
             size="sm"

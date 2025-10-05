@@ -1,21 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { App } from "./App.tsx";
-import {
-  GameProvider,
-  ModalProvider,
-  SettingsProvider,
-} from "./components/providers";
+import { ModalProvider, SettingsProvider } from "./components/providers";
+import { RouterProvider } from "react-router";
+import { router } from "./config/router";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ModalProvider>
-      <GameProvider>
-        <SettingsProvider>
-          <App />
-        </SettingsProvider>
-      </GameProvider>
+      <SettingsProvider>
+        <RouterProvider router={router} />
+      </SettingsProvider>
     </ModalProvider>
   </StrictMode>,
 );

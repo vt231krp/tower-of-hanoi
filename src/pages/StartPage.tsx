@@ -1,9 +1,7 @@
+import { Link } from "react-router";
 import { Button } from "../components";
-import { useGameContext } from "../contexts/GameContext";
 
 export const StartPage = () => {
-  const { setGameState } = useGameContext();
-
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-10">
       <div className="space-y-2 text-center">
@@ -13,8 +11,8 @@ export const StartPage = () => {
         </p>
       </div>
 
-      <Button size="lg" onClick={() => setGameState("game")}>
-        ▶️ Start Game
+      <Button size="lg" asChild>
+        <Link to="/game">▶️ Start Game</Link>
       </Button>
     </div>
   );
