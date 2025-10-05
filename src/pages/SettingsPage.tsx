@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { GameSetupForm } from "../components";
 import { Button } from "../components";
-import { useSettings } from "../contexts/SettingsContext";
+import { useSettings } from "../store/useSettings";
 
 export const SettingsPage = () => {
   const { resetSettings } = useSettings();

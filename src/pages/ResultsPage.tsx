@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import { Button } from "../components";
-import { useSettings } from "../contexts/SettingsContext";
 import { useResults } from "../hooks/useResults";
 import { formatTime } from "../lib/utils";
+import { useSettings } from "../store/useSettings";
 
 export const ResultsPage = () => {
   const { lastGame, statistics, clearResults } = useResults();

@@ -3,12 +3,15 @@ import { Tower, Button } from "../components";
 import { Timer, type TimerRef } from "../components/Timer";
 import { useTowerOfHanoi } from "../hooks/useTowerOfHanoi";
 import { useResults } from "../hooks/useResults";
-import { useSettings } from "../contexts/SettingsContext";
 import { useModal } from "../contexts/ModalContext";
+import { useSettings } from "../store/useSettings";
 
 export const GamePage = () => {
   const { addResult } = useResults();
-  const { difficulty, updateDifficulty } = useSettings();
+  const {
+    settings: { difficulty },
+    updateDifficulty,
+  } = useSettings();
   const { openModal } = useModal();
   const timerRef = useRef<TimerRef>(null);
 
