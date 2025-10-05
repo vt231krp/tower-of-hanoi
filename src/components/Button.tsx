@@ -1,9 +1,11 @@
+import { Slot } from "@radix-ui/react-slot";
 import { cn } from "../lib/utils";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   size?: "sm" | "md" | "lg" | "xl";
   variant?: "primary" | "secondary" | "outline" | "ghost";
+  asChild?: boolean;
 }
 
 const variants: Record<string, Record<string, string>> = {
@@ -14,14 +16,13 @@ const variants: Record<string, Record<string, string>> = {
     xl: "px-8 py-4 text-2xl font-bold",
   },
   variant: {
-    primary:
-      "bg-amber-500 text-slate-900 border-amber-600 hover:bg-amber-400 active:bg-amber-600",
+    primary: "bg-blue-700 hover:bg-blue-800 active:bg-blue-900  text-white",
     secondary:
-      "bg-slate-600 text-white border-slate-700 hover:bg-slate-500 active:bg-slate-700",
+      "bg-slate-800 hover:bg-slate-700 active:bg-slate-900  text-white",
     outline:
-      "bg-transparent text-amber-300 border-amber-300 hover:bg-amber-300 hover:text-slate-900 active:bg-amber-400",
+      "bg-transparent border-2 border-blue-700 hover:bg-blue-50 active:bg-blue-100  text-blue-700 hover:text-blue-800",
     ghost:
-      "bg-transparent text-gray-300 border-transparent hover:bg-slate-700 hover:text-white active:bg-slate-600",
+      "bg-transparent hover:bg-gray-100 active:bg-gray-200 text-gray-700 hover:text-gray-800",
   },
 };
 
@@ -30,14 +31,15 @@ export const Button = ({
   size = "sm",
   variant = "primary",
   disabled = false,
+  asChild,
   ...props
 }: ButtonProps) => {
+  const Comp = asChild ? Slot : "button";
+
   return (
-    <button
+    <Comp
       className={cn(
-        "cursor-pointer rounded-lg border-b-2 uppercase transition-all duration-150",
-        "active:translate-y-[1px] active:border-b-[1px]",
-        "disabled:cursor-not-allowed disabled:opacity-50 disabled:active:translate-y-0 disabled:active:border-b-2",
+        "cursor-pointer rounded-lg transition-all duration-150",
         variants.size[size],
         variants.variant[variant],
         className,

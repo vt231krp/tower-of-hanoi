@@ -17,15 +17,6 @@ export const SettingsPage = () => {
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-8 p-6">
-      <div className="text-center">
-        <h1 className="mb-4 text-5xl font-bold text-amber-300">
-          Game Settings
-        </h1>
-        <p className="text-lg text-gray-400">
-          Customize your Tower of Hanoi experience
-        </p>
-      </div>
-
       <div className="w-full max-w-md space-y-5">
         <GameSetupForm />
 

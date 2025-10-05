@@ -59,10 +59,8 @@ export const GameSetupForm = ({ initialValues }: GameSetupFormProps) => {
   };
 
   return (
-    <div className="w-full max-w-md space-y-6 rounded-lg bg-slate-800 p-8">
-      <h2 className="text-center text-2xl font-bold text-amber-300">
-        Game Setup
-      </h2>
+    <div className="w-full max-w-md space-y-6 rounded-lg bg-slate-800 p-5">
+      <h2 className="text-center text-2xl font-bold">Game Setup</h2>
 
       <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
         <div className="space-y-3">
@@ -82,9 +80,7 @@ export const GameSetupForm = ({ initialValues }: GameSetupFormProps) => {
             </Button>
 
             <div className="text-center">
-              <div className="text-3xl font-bold text-amber-300">
-                {selectedDifficulty}
-              </div>
+              <div className="text-3xl font-bold">{selectedDifficulty}</div>
               <div className="text-sm text-gray-400">disks</div>
             </div>
 
@@ -123,8 +119,8 @@ export const GameSetupForm = ({ initialValues }: GameSetupFormProps) => {
                 onClick={() => setValue("difficulty", difficulty.value)}
                 className={`rounded-lg border-2 p-3 text-sm transition-all ${
                   selectedDifficulty === difficulty.value
-                    ? "border-amber-400 bg-amber-400/10 text-amber-300"
-                    : "border-slate-600 bg-slate-700 text-gray-300 hover:bg-slate-600"
+                    ? "border-blue-500 bg-blue-500/20"
+                    : "border-gray-600 bg-gray-700 text-gray-300 hover:bg-gray-600"
                 }`}
               >
                 <div className="font-medium">{difficulty.label}</div>

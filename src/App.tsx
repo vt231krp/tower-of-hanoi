@@ -20,7 +20,7 @@ export const App = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-900">
+    <div className="flex min-h-screen flex-col bg-slate-950 text-white">
       <Header />
       {renderPage()}
       <Modal />

@@ -25,7 +25,7 @@ export const Modal = () => {
   return (
     <div className="absolute inset-0 z-100000 flex items-center justify-center bg-black/60">
       <div
-        className="w-full max-w-md space-y-2 rounded-xl bg-slate-800 p-5"
+        className="w-full max-w-md space-y-2 rounded-xl border border-slate-600 bg-slate-950 p-5"
         ref={modalRef}
       >
         <div className="flex justify-end">

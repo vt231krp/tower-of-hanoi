@@ -5,13 +5,10 @@ export const Header = () => {
   const { setGameState } = useGameContext();
 
   return (
-    <header className="w-full border-b border-slate-700 bg-slate-900/50 backdrop-blur-sm">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between p-6">
+    <header className="w-full border-b border-slate-700 backdrop-blur-sm">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between p-5">
         <div className="flex items-center gap-3">
-          <a
-            href="/"
-            className="bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent transition-all duration-200 hover:from-amber-300 hover:to-yellow-300"
-          >
+          <a href="/" className="text-3xl font-bold text-blue-700">
             Tower of Hanoi
           </a>
         </div>
