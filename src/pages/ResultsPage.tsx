@@ -1,29 +1,29 @@
+import { useNavigate } from "react-router";
 import { Button } from "../components";
-import { useGameContext } from "../contexts/GameContext";
 import { useSettings } from "../contexts/SettingsContext";
 import { useResults } from "../hooks/useResults";
 import { formatTime } from "../lib/utils";
 
 export const ResultsPage = () => {
   const { lastGame, statistics, clearResults } = useResults();
-  const { setGameState } = useGameContext();
   const { updateDifficulty } = useSettings();
+  const navigate = useNavigate();
 
   const handlePlayAgain = () => {
     if (lastGame?.difficulty) {
       updateDifficulty(lastGame?.difficulty);
     }
-    setGameState("game");
+    navigate("/game");
   };
 
   const handleBack = () => {
-    setGameState("start");
+    navigate("/");
   };
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-10">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold text-amber-300">Game Results</h1>
+    <div className="flex flex-1 flex-col items-center justify-center gap-10 py-5">
+      <div className="space-y-2 text-center">
+        <h1 className="text-4xl font-bold text-blue-700">Game Results</h1>
         <p className="text-xl text-gray-300">
           Current game and overall statistics
         </p>
@@ -31,21 +31,21 @@ export const ResultsPage = () => {
 
       <div className="flex flex-col gap-6 lg:flex-row">
         <div className="w-full max-w-md space-y-6 rounded-lg bg-slate-800 p-8">
-          <h2 className="text-center text-xl font-bold text-amber-300">
+          <h2 className="text-center text-xl font-bold">
             Last Game ({lastGame?.difficulty || "N/A"})
           </h2>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-lg font-medium text-gray-300">Time:</span>
-              <span className="text-2xl font-bold text-amber-300">
+              <span className="text-2xl font-bold text-blue-700">
                 {lastGame?.time ? formatTime(lastGame?.time) : "N/A"}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="text-lg font-medium text-gray-300">Moves:</span>
-              <span className="text-2xl font-bold text-amber-300">
+              <span className="text-2xl font-bold text-blue-700">
                 {lastGame?.moves || "N/A"}
               </span>
             </div>
@@ -54,7 +54,7 @@ export const ResultsPage = () => {
               <span className="text-lg font-medium text-gray-300">
                 Minimum Moves:
               </span>
-              <span className="text-2xl font-bold text-amber-300">
+              <span className="text-2xl font-bold text-blue-700">
                 {lastGame?.minimumMoves || "N/A"}
               </span>
             </div>
@@ -62,21 +62,19 @@ export const ResultsPage = () => {
         </div>
 
         <div className="w-full max-w-md space-y-6 rounded-lg bg-slate-800 p-8">
-          <h2 className="text-center text-xl font-bold text-amber-300">
-            Overall Statistics
-          </h2>
+          <h2 className="text-center text-xl font-bold">Overall Statistics</h2>
 
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Games Played:</span>
-              <span className="font-bold text-amber-300">
+              <span className="font-bold text-blue-700">
                 {statistics.gamesPlayed}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Total Time:</span>
-              <span className="font-bold text-amber-300">
+              <span className="font-bold text-blue-700">
                 {formatTime(statistics.totalTime)}
               </span>
             </div>
@@ -90,14 +88,14 @@ export const ResultsPage = () => {
 
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Total Moves:</span>
-              <span className="font-bold text-amber-300">
+              <span className="font-bold text-blue-700">
                 {statistics.totalMoves}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Average Moves:</span>
-              <span className="font-bold text-amber-300">
+              <span className="font-bold text-blue-700">
                 {statistics.averageMoves}
               </span>
             </div>

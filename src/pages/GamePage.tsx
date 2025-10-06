@@ -59,12 +59,10 @@ export const GamePage = () => {
   }, [isWon, endTime]);
 
   return (
-    <div className="flex flex-1 flex-col items-center gap-10">
+    <div className="flex flex-1 flex-col items-center gap-10 py-5">
       <div className="flex flex-col items-center gap-2">
         <div className="flex items-center gap-4">
-          <span className="text-2xl font-medium text-amber-300">
-            Moves: {moves}
-          </span>
+          <span className="text-2xl font-medium">Moves: {moves}</span>
           <span className="text-lg text-gray-400">
             ( Min: {Math.pow(2, difficulty) - 1})
           </span>
@@ -72,7 +70,7 @@ export const GamePage = () => {
         <Timer ref={timerRef} />
       </div>
 
-      <div className="flex h-[200px] w-full items-end justify-center gap-3 md:h-[300px]">
+      <div className="flex h-[200px] w-full items-end justify-center gap-3 md:h-[250px]">
         {towers.map((tower, i) => (
           <Tower
             disks={tower}

@@ -50,11 +50,7 @@ export const Timer = forwardRef<TimerRef>((_, ref) => {
     },
   }));
 
-  return (
-    <div className="text-2xl font-medium text-amber-300">
-      {formatTime(time)}
-    </div>
-  );
+  return <div className="text-2xl font-medium">{formatTime(time)}</div>;
 });
 
 Timer.displayName = "Timer";

@@ -1,43 +1,40 @@
-import { useGameContext } from "../contexts/GameContext";
+import { Link } from "react-router";
 import { Button } from "./Button";
 
-export const Header = () => {
-  const { setGameState } = useGameContext();
+const navLinks = [
+  {
+    path: "/settings",
+    title: "Settings",
+    variant: "ghost" as const,
+  },
+  {
+    path: "/results",
+    title: "Results",
+    variant: "ghost" as const,
+  },
+  {
+    path: "/game",
+    title: "Start",
+    variant: "outline" as const,
+  },
+];
 
+export const Header = () => {
   return (
-    <header className="w-full border-b border-slate-700 bg-slate-900/50 backdrop-blur-sm">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between p-6">
+    <header className="w-full border-b border-slate-700 backdrop-blur-sm">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between p-5">
         <div className="flex items-center gap-3">
-          <a
-            href="/"
-            className="bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent transition-all duration-200 hover:from-amber-300 hover:to-yellow-300"
-          >
+          <Link to="/" className="text-3xl font-bold text-blue-700">
             Tower of Hanoi
-          </a>
+          </Link>
         </div>
 
         <nav className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setGameState("settings")}
-          >
-            Settings
-          </Button>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => setGameState("start")}
-          >
-            Home
-          </Button>
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => setGameState("results")}
-          >
-            Results
-          </Button>
+          {navLinks.map(({ path, title, variant }) => (
+            <Button size="sm" variant={variant} asChild>
+              <Link to={path}>{title}</Link>
+            </Button>
+          ))}
         </nav>
       </div>
     </header>
