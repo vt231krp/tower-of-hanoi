@@ -21,7 +21,7 @@ export const ResultsPage = () => {
   };
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-10 py-5">
+    <div className="flex flex-1 flex-col items-center justify-center gap-10">
       <div className="space-y-2 text-center">
         <h1 className="text-4xl font-bold text-blue-700">Game Results</h1>
         <p className="text-xl text-gray-300">

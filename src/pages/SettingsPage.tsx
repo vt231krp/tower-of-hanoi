@@ -11,7 +11,7 @@ export const SettingsPage = () => {
   };
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-8 p-6">
+    <div className="flex flex-1 flex-col items-center justify-center gap-8">
       <div className="w-full max-w-md space-y-5">
         <GameSetupForm />
 
