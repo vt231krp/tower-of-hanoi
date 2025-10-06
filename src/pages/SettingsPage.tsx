@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { GameSetupForm } from "../components";
 import { Button } from "../components";
-import { useSettings } from "../contexts/SettingsContext";
+import { useSettings } from "../store/useSettings";
 
 export const SettingsPage = () => {
   const { resetSettings } = useSettings();
@@ -11,7 +11,7 @@ export const SettingsPage = () => {
   };
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-8 p-6">
+    <div className="flex flex-1 flex-col items-center justify-center gap-8">
       <div className="w-full max-w-md space-y-5">
         <GameSetupForm />
 

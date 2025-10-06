@@ -39,7 +39,7 @@ export const Button = ({
   return (
     <Comp
       className={cn(
-        "cursor-pointer rounded-lg transition-all duration-150",
+        "cursor-pointer rounded-lg text-center transition-all duration-150",
         variants.size[size],
         variants.variant[variant],
         className,

@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "./Button";
 import { settingsSchema } from "../schemas/settings";
-import { useSettings } from "../contexts/SettingsContext";
+import { useSettings } from "../store/useSettings";
 
 type GameSetupData = z.infer<typeof settingsSchema>;
 
