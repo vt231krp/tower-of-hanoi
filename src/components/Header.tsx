@@ -21,7 +21,7 @@ const navLinks = [
 
 export const Header = () => {
   return (
-    <header className="w-full border-b border-slate-700 backdrop-blur-sm">
+    <header className="bg-slack-950 sticky top-0 w-full border-b border-slate-700 backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between p-5">
         <div className="flex items-center gap-3">
           <Link to="/" className="text-3xl font-bold text-blue-700">
