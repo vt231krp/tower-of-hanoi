@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react";
 import { Tower, Button } from "../components";
 import { Timer, type TimerRef } from "../components/Timer";
 import { useTowerOfHanoi } from "../hooks/useTowerOfHanoi";
-import { useResults } from "../hooks/useResults";
 import { useModal } from "../contexts/ModalContext";
 import { useSettings } from "../store/useSettings";
+import { useResults } from "../store/useResults";
 
 export const GamePage = () => {
   const { addResult } = useResults();
