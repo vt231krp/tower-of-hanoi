@@ -1,10 +1,9 @@
 import { cn } from "../lib/utils";
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   size?: "sm" | "md" | "lg" | "xl";
   variant?: "primary" | "secondary" | "outline" | "ghost";
-  disabled?: boolean;
 }
 
 const variants: Record<string, Record<string, string>> = {
@@ -28,7 +27,7 @@ const variants: Record<string, Record<string, string>> = {
 
 export const Button = ({
   className,
-  size = "md",
+  size = "sm",
   variant = "primary",
   disabled = false,
   ...props

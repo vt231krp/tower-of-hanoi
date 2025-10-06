@@ -26,12 +26,14 @@ export const Timer = forwardRef<TimerRef>((_, ref) => {
     } else {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
     }
 
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
     };
   }, [isRunning]);
@@ -41,7 +43,9 @@ export const Timer = forwardRef<TimerRef>((_, ref) => {
       setIsRunning(false);
     },
     reset: () => {
+      setIsRunning(false);
       setTime(0);
+      startTimeRef.current = Date.now();
       setIsRunning(true);
     },
   }));
@@ -52,3 +56,5 @@ export const Timer = forwardRef<TimerRef>((_, ref) => {
     </div>
   );
 });
+
+Timer.displayName = "Timer";

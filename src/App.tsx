@@ -1,22 +1,21 @@
-import { GamePage, ResultsPage, StartPage } from "./pages";
+import { GamePage, ResultsPage, SettingsPage, StartPage } from "./pages";
 import { Header } from "./components";
 import { useGameContext } from "./contexts/GameContext";
+import { Modal } from "./components/Modal";
 
 export const App = () => {
-  const { gameState, setGameState } = useGameContext();
-
-  const handleStartGame = () => {
-    setGameState("game");
-  };
+  const { gameState } = useGameContext();
 
   const renderPage = () => {
     switch (gameState) {
       case "start":
-        return <StartPage onStartGame={handleStartGame} />;
+        return <StartPage />;
       case "game":
-        return <GamePage initDifficulty={2} />;
+        return <GamePage />;
       case "results":
         return <ResultsPage />;
+      case "settings":
+        return <SettingsPage />;
     }
   };
 
@@ -24,6 +23,7 @@ export const App = () => {
     <div className="flex min-h-screen flex-col bg-slate-900">
       <Header />
       {renderPage()}
+      <Modal />
     </div>
   );
 };

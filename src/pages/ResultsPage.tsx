@@ -1,11 +1,24 @@
 import { Button } from "../components";
 import { useGameContext } from "../contexts/GameContext";
+import { useSettings } from "../contexts/SettingsContext";
 import { useResults } from "../hooks/useResults";
 import { formatTime } from "../lib/utils";
 
 export const ResultsPage = () => {
   const { lastGame, statistics, clearResults } = useResults();
   const { setGameState } = useGameContext();
+  const { updateDifficulty } = useSettings();
+
+  const handlePlayAgain = () => {
+    if (lastGame?.difficulty) {
+      updateDifficulty(lastGame?.difficulty);
+    }
+    setGameState("game");
+  };
+
+  const handleBack = () => {
+    setGameState("start");
+  };
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-10">
@@ -111,7 +124,7 @@ export const ResultsPage = () => {
           size="md"
           variant="primary"
           className="flex-1"
-          onClick={() => setGameState("game")}
+          onClick={handlePlayAgain}
         >
           Play Again
         </Button>
@@ -121,7 +134,7 @@ export const ResultsPage = () => {
             size="sm"
             variant="secondary"
             className="flex-1"
-            onClick={() => setGameState("start")}
+            onClick={handleBack}
           >
             Back to Menu
           </Button>
@@ -129,9 +142,9 @@ export const ResultsPage = () => {
             size="sm"
             variant="secondary"
             className="flex-1"
-            onClick={() => clearResults()}
+            onClick={clearResults}
           >
-            Crear Results
+            Clear Results
           </Button>
         </div>
       </div>

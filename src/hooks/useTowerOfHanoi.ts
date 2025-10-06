@@ -76,6 +76,7 @@ export const useTowerOfHanoi = (initialDiskCount: number) => {
     selectedTower,
     towers,
     handleTowerClick,
+    resetGame,
     isWon,
     startTime,
     endTime,
