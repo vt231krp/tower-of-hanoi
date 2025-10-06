@@ -14,7 +14,7 @@ export const App = () => {
       case "start":
         return <StartPage onStartGame={handleStartGame} />;
       case "game":
-        return <GamePage />;
+        return <GamePage initDifficulty={2} />;
       case "results":
         return <ResultsPage />;
     }

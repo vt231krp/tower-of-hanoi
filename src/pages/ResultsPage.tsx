@@ -1,23 +1,11 @@
 import { Button } from "../components";
+import { useGameContext } from "../contexts/GameContext";
+import { useResults } from "../hooks/useResults";
+import { formatTime } from "../lib/utils";
 
 export const ResultsPage = () => {
-  // Mock data - replace with actual game context data
-  const currentGame = {
-    time: "2:34",
-    moves: 15,
-    minimumMoves: 7,
-    difficulty: "Easy",
-  };
-
-  const totalStats = {
-    gamesPlayed: 12,
-    totalTime: "32:18",
-    bestTime: "1:45",
-    totalMoves: 180,
-    averageMoves: 15,
-    bestMoves: 7,
-    perfectGames: 3,
-  };
+  const { lastGame, statistics, clearResults } = useResults();
+  const { setGameState } = useGameContext();
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-10">
@@ -31,21 +19,21 @@ export const ResultsPage = () => {
       <div className="flex flex-col gap-6 lg:flex-row">
         <div className="w-full max-w-md space-y-6 rounded-lg bg-slate-800 p-8">
           <h2 className="text-center text-xl font-bold text-amber-300">
-            Last Game ({currentGame.difficulty})
+            Last Game ({lastGame?.difficulty || "N/A"})
           </h2>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <span className="text-lg font-medium text-gray-300">Time:</span>
               <span className="text-2xl font-bold text-amber-300">
-                {currentGame.time}
+                {lastGame?.time ? formatTime(lastGame?.time) : "N/A"}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="text-lg font-medium text-gray-300">Moves:</span>
               <span className="text-2xl font-bold text-amber-300">
-                {currentGame.moves}
+                {lastGame?.moves || "N/A"}
               </span>
             </div>
 
@@ -54,7 +42,7 @@ export const ResultsPage = () => {
                 Minimum Moves:
               </span>
               <span className="text-2xl font-bold text-amber-300">
-                {currentGame.minimumMoves}
+                {lastGame?.minimumMoves || "N/A"}
               </span>
             </div>
           </div>
@@ -69,77 +57,83 @@ export const ResultsPage = () => {
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Games Played:</span>
               <span className="font-bold text-amber-300">
-                {totalStats.gamesPlayed}
+                {statistics.gamesPlayed}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Total Time:</span>
               <span className="font-bold text-amber-300">
-                {totalStats.totalTime}
+                {formatTime(statistics.totalTime)}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Best Time:</span>
               <span className="font-bold text-green-400">
-                {totalStats.bestTime}
+                {statistics.bestTime ? formatTime(statistics.bestTime) : "N/A"}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Total Moves:</span>
               <span className="font-bold text-amber-300">
-                {totalStats.totalMoves}
+                {statistics.totalMoves}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Average Moves:</span>
               <span className="font-bold text-amber-300">
-                {totalStats.averageMoves}
+                {statistics.averageMoves}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Best Moves:</span>
               <span className="font-bold text-green-400">
-                {totalStats.bestMoves}
+                {statistics.bestMoves || "N/A"}
               </span>
             </div>
 
             <div className="flex items-center justify-between">
               <span className="font-medium text-gray-300">Perfect Games:</span>
               <span className="font-bold text-green-400">
-                {totalStats.perfectGames}
+                {statistics.perfectGames}
               </span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="flex w-full max-w-md gap-4">
+      <div className="flex w-full max-w-md flex-col gap-4">
         <Button
-          size="lg"
+          size="md"
           variant="primary"
           className="flex-1"
-          onClick={() => {
-            /* Handle play again */
-          }}
+          onClick={() => setGameState("game")}
         >
           Play Again
         </Button>
 
-        <Button
-          size="lg"
-          variant="secondary"
-          className="flex-1"
-          onClick={() => {
-            /* Handle back to menu */
-          }}
-        >
-          Back to Menu
-        </Button>
+        <div className="flex gap-4">
+          <Button
+            size="sm"
+            variant="secondary"
+            className="flex-1"
+            onClick={() => setGameState("start")}
+          >
+            Back to Menu
+          </Button>
+          <Button
+            size="sm"
+            variant="secondary"
+            className="flex-1"
+            onClick={() => clearResults()}
+          >
+            Crear Results
+          </Button>
+        </div>
       </div>
     </div>
   );
