@@ -1,0 +1,24 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
+  "out": "public/docs",
+  "tsconfig": "tsconfig.app.json",
+  "readme": "README.md",
+  "name": "Tower of Hanoi",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "includeVersion": false,
+  "skipErrorChecking": true,
+  "exclude": ["**/node_modules/**"],
+  "categoryOrder": [
+    "Components",
+    "Hooks",
+    "Store",
+    "Pages",
+    "Types",
+    "Utils",
+    "*"
+  ]
+}
