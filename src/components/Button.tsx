@@ -1,10 +1,19 @@
 import { Slot } from "@radix-ui/react-slot";
 import { cn } from "../lib/utils";
 
+/**
+ * Props for the {@link Button} component.
+ *
+ * @extends React.ButtonHTMLAttributes
+ */
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /** Additional CSS class names */
   className?: string;
+  /** Button size variant. @defaultValue `"sm"` */
   size?: "sm" | "md" | "lg" | "xl";
+  /** Visual style variant. @defaultValue `"primary"` */
   variant?: "primary" | "secondary" | "outline" | "ghost";
+  /** When `true`, renders as a `Slot` to compose with child elements (e.g. `Link`). */
   asChild?: boolean;
 }
 
@@ -26,6 +35,16 @@ const variants: Record<string, Record<string, string>> = {
   },
 };
 
+/**
+ * Reusable button component with multiple size and style variants.
+ *
+ * Supports `asChild` pattern via Radix `Slot` for composing with other elements.
+ *
+ * @example
+ * ```tsx
+ * <Button variant="primary" size="md">Click me</Button>
+ * ```
+ */
 export const Button = ({
   className,
   size = "sm",

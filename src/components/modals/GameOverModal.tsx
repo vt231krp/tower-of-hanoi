@@ -2,14 +2,28 @@ import { useModal } from "../../contexts/ModalContext";
 import { formatTime } from "../../lib/utils";
 import { Button } from "../Button";
 
+/**
+ * Props for the {@link GameOverModal} component.
+ */
 export interface GameOverModalProps {
+  /** Number of disks used in the completed game. */
   difficulty: number;
+  /** Total moves the player made. */
   moves: number;
+  /** Elapsed time in milliseconds. */
   time: number;
+  /** Callback to restart the game at the same difficulty. */
   onPlayAgain: () => void;
+  /** Callback to advance to the next difficulty level. */
   onNextLevel: () => void;
 }
 
+/**
+ * Modal displayed when the player completes the puzzle.
+ *
+ * Shows time, moves, and difficulty, with options to play again
+ * or advance to the next level.
+ */
 const GameOverModal = ({
   difficulty,
   moves,

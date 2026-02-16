@@ -34,6 +34,12 @@ const navLinks = [
   },
 ];
 
+/**
+ * Application header with navigation links.
+ *
+ * Renders the logo and a responsive nav bar with links to
+ * Home, Settings, Results, Privacy, and Play pages.
+ */
 export const Header = () => {
   return (
     <header className="bg-slack-950 w-full">

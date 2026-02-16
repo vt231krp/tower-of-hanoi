@@ -1,24 +1,45 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+/**
+ * A single game result entry.
+ */
 interface GameResult {
+  /** Unique identifier (timestamp-based). */
   id: string;
+  /** Number of disks used in the game. */
   difficulty: number;
+  /** Total moves made by the player. */
   moves: number;
+  /** Elapsed time in milliseconds. */
   time: number;
+  /** Theoretical minimum moves for this difficulty ($2^n - 1$). */
   minimumMoves: number;
+  /** Whether the puzzle was completed. */
   isCompleted: boolean;
+  /** When the game was played. */
   timestamp: Date;
 }
 
+/**
+ * Aggregated statistics derived from all game results.
+ */
 interface Statistics {
+  /** Total number of games played. */
   gamesPlayed: number;
+  /** Sum of all game times in milliseconds. */
   totalTime: number;
+  /** Fastest completion time, or `null` if no games completed. */
   bestTime: number | null;
+  /** Sum of all moves across games. */
   totalMoves: number;
+  /** Average moves per game. */
   averageMoves: number;
+  /** Fewest moves in a completed game, or `null`. */
   bestMoves: number | null;
+  /** Count of games completed in the minimum possible moves. */
   perfectGames: number;
+  /** Percentage of games completed (0–100). */
   winRate: number;
 }
 
@@ -30,6 +51,9 @@ interface ResultsState {
   lastGame: GameResult | null;
 }
 
+/**
+ * Computes aggregated {@link Statistics} from an array of {@link GameResult}.
+ */
 const calculateStatistics = (results: GameResult[]): Statistics => {
   const completedGames = results.filter((result) => result.isCompleted);
 
@@ -62,6 +86,11 @@ const calculateStatistics = (results: GameResult[]): Statistics => {
   };
 };
 
+/**
+ * Zustand store for game results and statistics, persisted to `localStorage`.
+ *
+ * Provides actions to add results, clear history, and access computed statistics.
+ */
 export const useResults = create<ResultsState>()(
   persist(
     (set) => ({

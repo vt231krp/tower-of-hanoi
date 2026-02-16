@@ -1,5 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 
+/**
+ * Core game logic hook for the Tower of Hanoi puzzle.
+ *
+ * Manages tower state, move counting, win detection, and timing.
+ *
+ * @param initialDiskCount - Number of disks to start the game with (3–7).
+ * @returns Game state and handlers: `towers`, `moves`, `selectedTower`,
+ *   `isWon`, `startTime`, `endTime`, `handleTowerClick`, `resetGame`.
+ */
 export const useTowerOfHanoi = (initialDiskCount: number) => {
   const [towers, setTowers] = useState<number[][]>([[], [], []]);
   const [selectedTower, setSelectedTower] = useState<number | null>(null);

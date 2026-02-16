@@ -1,11 +1,25 @@
 import { Disk } from "./Disk";
 
+/**
+ * Props for the {@link Tower} component.
+ */
 interface TowerProps {
+  /** Array of disk sizes currently on this tower (bottom to top). */
   disks: number[];
+  /** Callback fired when the tower is clicked. */
   onTowerClick: () => void;
+  /** Whether this tower is currently selected by the player. */
   isSelected: boolean;
 }
 
+/**
+ * Renders a single tower peg with its disks.
+ *
+ * Displays a vertical stack of {@link Disk} components and a base.
+ * Highlights the base when the tower is selected.
+ *
+ * @param props - {@link TowerProps}
+ */
 export const Tower = ({ disks, onTowerClick, isSelected }: TowerProps) => {
   return (
     <div

@@ -1,6 +1,13 @@
 import CookieConsent from "react-cookie-consent";
 import { Link } from "react-router";
 
+/**
+ * GDPR-compliant cookie consent banner.
+ *
+ * Displays at the bottom of the page using `react-cookie-consent`.
+ * Allows users to accept or decline non-essential cookies.
+ * Includes a link to the Privacy Policy page.
+ */
 const CookieCons = () => {
   return (
     <CookieConsent

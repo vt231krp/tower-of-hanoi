@@ -7,11 +7,28 @@ import {
 } from "react";
 import { formatTime } from "../lib/utils";
 
+/**
+ * Imperative handle exposed by the {@link Timer} component via `ref`.
+ */
 export interface TimerRef {
+  /** Stops the timer. */
   stop: () => void;
+  /** Resets and restarts the timer. */
   reset: () => void;
 }
 
+/**
+ * Elapsed-time display with imperative `stop` and `reset` controls.
+ *
+ * Starts automatically on mount. Use a `ref` to control:
+ *
+ * @example
+ * ```tsx
+ * const timerRef = useRef<TimerRef>(null);
+ * <Timer ref={timerRef} />
+ * timerRef.current?.stop();
+ * ```
+ */
 export const Timer = forwardRef<TimerRef>((_, ref) => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(true);

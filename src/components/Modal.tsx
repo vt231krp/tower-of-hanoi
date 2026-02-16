@@ -6,6 +6,13 @@ import type { GameOverModalProps } from "./modals/GameOverModal";
 
 const GameOverModal = lazy(() => import("./modals/GameOverModal"));
 
+/**
+ * Global modal container that renders the active modal based on context.
+ *
+ * Uses {@link useModal} to determine which modal to display and
+ * {@link useOnClickOutside} to close on outside clicks.
+ * Currently supports the `"gameOver"` modal type.
+ */
 export const Modal = () => {
   const { modal, modalParams, closeModal, isOpen } = useModal();
 

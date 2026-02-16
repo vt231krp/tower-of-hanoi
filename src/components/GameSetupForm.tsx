@@ -8,10 +8,22 @@ import { useSettings } from "../store/useSettings";
 
 type GameSetupData = z.infer<typeof settingsSchema>;
 
+/**
+ * Props for the {@link GameSetupForm} component.
+ */
 interface GameSetupFormProps {
+  /** Optional initial form values to pre-fill the form. */
   initialValues?: Partial<GameSetupData>;
 }
 
+/**
+ * Form for configuring game difficulty (number of disks).
+ *
+ * Uses `react-hook-form` with Zod validation. Persists settings
+ * to the {@link useSettings} store on submit.
+ *
+ * @param props - {@link GameSetupFormProps}
+ */
 export const GameSetupForm = ({ initialValues }: GameSetupFormProps) => {
   const { settings, updateSettings } = useSettings();
 

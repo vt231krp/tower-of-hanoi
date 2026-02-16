@@ -11,7 +11,7 @@
   "excludeInternal": true,
   "includeVersion": false,
   "skipErrorChecking": true,
-  "exclude": ["**/node_modules/**"],
+  "exclude": ["**/node_modules/**", "**/*.stories.tsx"],
   "categoryOrder": [
     "Components",
     "Hooks",
