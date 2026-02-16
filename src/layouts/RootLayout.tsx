@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import { Header, Modal } from "../components";
+import CookieCons from "../components/CookieCons";
 
 export const RootLayout = () => {
   return (
@@ -8,6 +9,7 @@ export const RootLayout = () => {
       <main className="flex flex-1 p-5">
         <Outlet />
       </main>
+      <CookieCons />
       <Modal />
     </div>
   );

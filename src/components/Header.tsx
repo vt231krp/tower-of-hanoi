@@ -21,6 +21,12 @@ const navLinks = [
     icon: "📊",
   },
   {
+    path: "/privacy",
+    title: "Privacy",
+    variant: "ghost" as const,
+    icon: "🔒",
+  },
+  {
     path: "/game",
     title: "Play",
     variant: "primary" as const,

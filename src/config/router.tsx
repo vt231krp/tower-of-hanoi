@@ -1,5 +1,10 @@
 import { createBrowserRouter } from "react-router";
-import { GamePage, ResultsPage, SettingsPage } from "../pages";
+import {
+  GamePage,
+  PrivacyPolicyPage,
+  ResultsPage,
+  SettingsPage,
+} from "../pages";
 import { StartPage } from "../pages/StartPage";
 import { RootLayout } from "../layouts/RootLayout";
 
@@ -22,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "/settings",
         element: <SettingsPage />,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyPolicyPage />,
       },
     ],
   },
