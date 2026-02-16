@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
 export const useTowerOfHanoi = (initialDiskCount: number) => {
-  const [numDisks, setNumDisks] = useState<number>(initialDiskCount);
   const [towers, setTowers] = useState<number[][]>([[], [], []]);
   const [selectedTower, setSelectedTower] = useState<number | null>(null);
   const [moves, setMoves] = useState<number>(0);
@@ -23,20 +22,20 @@ export const useTowerOfHanoi = (initialDiskCount: number) => {
   }, []);
 
   useEffect(() => {
-    resetGame(numDisks);
-  }, [numDisks, resetGame]);
+    resetGame(initialDiskCount);
+  }, [initialDiskCount, resetGame]);
 
   const checkWinCondition = useCallback(
     (currentTowers: number[][]) => {
       if (
         currentTowers[0].length === 0 &&
-        currentTowers[2].length === numDisks
+        currentTowers[2].length === initialDiskCount
       ) {
         setIsWon(true);
         setEndTime(Date.now());
       }
     },
-    [numDisks],
+    [initialDiskCount],
   );
 
   const handleTowerClick = (towerIndex: number) => {
